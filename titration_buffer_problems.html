@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titration & Buffer Practice</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2C3E50; }
+        ol { margin-left: 20px; }
+        .answer-box { margin-bottom: 15px; width: 150px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Titration & Buffer Calculation Practice</h1>
+
+    <h2>Instructions:</h2>
+    <p>Solve each problem and enter your answer with the correct number of significant figures in the box. Click "Submit" to check your answers.</p>
+
+    <form id="titrationForm">
+        <ol>
+            <li>0.100 M HCl is titrated with 0.100 M NaOH. What is the pH after adding 25.0 mL NaOH to 50.0 mL HCl? <input type="text" class="answer-box" id="q1"></li>
+            <li>0.100 M HCl titrated with 0.100 M NaOH. What is the pH at the equivalence point? <input type="text" class="answer-box" id="q2"></li>
+            <li>0.100 M CH3COOH (Ka = 1.8 × 10^-5) titrated with 0.100 M NaOH. What is the pH after adding 25.0 mL NaOH to 50.0 mL CH3COOH? <input type="text" class="answer-box" id="q3"></li>
+            <li>Design a buffer with pH 4.75 using acetic acid (Ka = 1.8 × 10^-5). Total concentration of HA + A^- = 0.100 M. What are [HA] and [A^-]? <input type="text" class="answer-box" id="q4"></li>
+            <li>0.050 M NH4Cl/NH3 buffer (0.100 M NH3). What is the pH? (Ka(NH4+) = 5.6 × 10^-10) <input type="text" class="answer-box" id="q5"></li>
+        </ol>
+
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '1.7',     // example rounded to 2 sig figs
+            q2: '7.0',
+            q3: '4.74',
+            q4: '[HA] = 0.050, [A^-] = 0.050',
+            q5: '11.3'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 5; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').inn
