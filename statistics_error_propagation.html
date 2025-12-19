@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics & Error Propagation Practice</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2C3E50; }
+        ol { margin-left: 20px; }
+        .answer-box { margin-bottom: 15px; width: 150px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Mean, Standard Deviation & Propagation of Uncertainty</h1>
+
+    <h2>Instructions:</h2>
+    <p>Calculate the requested quantity for each problem. Enter your answer in the box with the correct number of significant figures and click "Submit".</p>
+
+    <form id="statsForm">
+        <ol>
+            <!-- Mean -->
+            <li>Data set: 2.1, 2.3, 2.5, 2.4, 2.2. Calculate the mean: <input type="text" class="answer-box" id="q1"></li>
+            <!-- Standard deviation -->
+            <li>Same data set: 2.1, 2.3, 2.5, 2.4, 2.2. Calculate the standard deviation: <input type="text" class="answer-box" id="q2"></li>
+            <!-- Propagation: addition -->
+            <li>Measurements: A = 5.2 ± 0.1, B = 3.4 ± 0.2. Find C = A + B, including uncertainty: <input type="text" class="answer-box" id="q3"></li>
+            <!-- Propagation: subtraction -->
+            <li>Measurements: D = 7.5 ± 0.3, E = 2.1 ± 0.2. Find F = D - E, including uncertainty: <input type="text" class="answer-box" id="q4"></li>
+            <!-- Propagation: multiplication -->
+            <li>G = 2.0 ± 0.1, H = 3.0 ± 0.2. Find P = G × H, including uncertainty: <input type="text" class="answer-box" id="q5"></li>
+            <!-- Propagation: division -->
+            <li>J = 10.0 ± 0.5, K = 2.0 ± 0.1. Find Q = J / K, including uncertainty: <input type="text" class="answer-box" id="q6"></li>
+            <!-- Mixed propagation -->
+            <li>L = 4.0 ± 0.1, M = 2.0 ± 0.05, N = 3.0 ± 0.1. Find R = (L + M) / N, including uncertainty: <input type="text" class="answer-box" id="q7"></li>
+            <!-- Mean with different numbers -->
+            <li>Data set: 1.2, 1.5, 1.3, 1.4. Calculate the mean: <input type="text" class="answer-box" id="q8"></li>
+            <!-- Standard deviation with different numbers -->
+            <li>Same data set: 1.2, 1.5, 1.3, 1.4. Calculate the standard deviation: <input type="text" class="answer-box" id="q9"></li>
+            <!-- Propagation with constants -->
+            <li>V = 3.0 ± 0.1, W = 2.0 ± 0.05. Find X = 2 × V - W, including uncertainty: <input type="text" class="answer-box" id="q10"></li>
+        </ol>
+
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '2.3',
+            q2: '0.141',
+            q3: '8.6 ± 0.22',
+            q4: '5.4 ± 0.36',
+            q5: '6.0 ± 0.5',
+            q6: '5.0 ± 0.38',
+            q7: '2.0 ± 0.1',
+            q8: '1.35',
+            q9: '0.129',
+            q10: '4.0 ± 0.11'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 10; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
+
+</body>
+</html>
