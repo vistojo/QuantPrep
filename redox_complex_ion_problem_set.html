@@ -8,7 +8,8 @@
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
         h1, h2 { color: #2C3E50; }
         ol { margin-left: 20px; }
-        .answers { background-color: #F4F4F4; padding: 10px; border-left: 4px solid #3498DB; }
+        .answer-box { margin-bottom: 15px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -16,25 +17,43 @@
     <h1>Redox & Complex Ion Equilibrium Problem Set (4 Questions)</h1>
 
     <h2>Instructions:</h2>
-    <p>Solve the following redox and complex ion equilibrium problems. Show all calculations, including determining the relevant equilibrium constants or cell potentials.</p>
+    <p>Enter your calculated value for cell potential, equilibrium constant, or concentration in the text box and click 'Submit' to check your answers.</p>
 
-    <h2>Problems:</h2>
-    <ol>
-        <li>Calculate the standard cell potential (E°cell) for the reaction: Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s). Given E°(Cu²⁺/Cu) = +0.34 V and E°(Zn²⁺/Zn) = -0.76 V.</li>
-        <li>Determine the equilibrium constant (K) for the reaction: Fe²⁺ + Ce⁴⁺ → Fe³⁺ + Ce³⁺ at 25°C using the standard potentials E°(Ce⁴⁺/Ce³⁺) = +1.61 V and E°(Fe³⁺/Fe²⁺) = +0.77 V.</li>
-        <li>Calculate the concentration of Cu²⁺ in a solution at equilibrium if 0.10 M NH₃ is added to form the complex [Cu(NH₃)₄]²⁺, given Kf = 1.0 × 10¹³.</li>
-        <li>For the reaction Ag⁺ + 2 NH₃ ⇌ [Ag(NH₃)₂]⁺, calculate the concentration of free Ag⁺ in a solution where [NH₃] = 0.05 M and Kf = 1.6 × 10⁷.</li>
-    </ol>
-
-    <h2>Answer Key</h2>
-    <div class="answers">
+    <form id="redoxForm">
         <ol>
-            <li>E°cell = 1.10 V</li>
-            <li>K ≈ 1.4 × 10¹⁴</li>
-            <li>[Cu²⁺] ≈ 1.0 × 10⁻¹⁴ M</li>
-            <li>[Ag⁺] ≈ 6.25 × 10⁻⁸ M</li>
+            <li>Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s). Calculate E°cell = <input type="text" class="answer-box" id="q1"></li>
+            <li>Fe²⁺ + Ce⁴⁺ → Fe³⁺ + Ce³⁺. Calculate K = <input type="text" class="answer-box" id="q2"></li>
+            <li>0.10 M NH₃ + Cu²⁺ forming [Cu(NH₃)₄]²⁺, Kf = 1.0 × 10¹³. [Cu²⁺] = <input type="text" class="answer-box" id="q3"></li>
+            <li>Ag⁺ + 2 NH₃ ⇌ [Ag(NH₃)₂]⁺, [NH₃] = 0.05 M, Kf = 1.6 × 10⁷. [Ag⁺] = <input type="text" class="answer-box" id="q4"></li>
         </ol>
-    </div>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '1.10',
+            q2: '1.4e14',
+            q3: '1e-14',
+            q4: '6.25e-8'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 4; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
 
 </body>
 </html>
