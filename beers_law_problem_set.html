@@ -8,7 +8,8 @@
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
         h1, h2 { color: #2C3E50; }
         ol { margin-left: 20px; }
-        .answers { background-color: #F4F4F4; padding: 10px; border-left: 4px solid #3498DB; }
+        .answer-box { margin-bottom: 15px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -16,27 +17,45 @@
     <h1>Beer's Law / Spectroscopy Problem Set (5 Questions)</h1>
 
     <h2>Instructions:</h2>
-    <p>Use Beer's Law, A = ε × l × c, to solve the following problems. Assume the path length (l) is 1.00 cm unless specified otherwise.</p>
+    <p>Enter your calculated value for absorbance or concentration in the text box and click 'Submit' to check your answers.</p>
 
-    <h2>Problems:</h2>
-    <ol>
-        <li>The molar absorptivity (ε) of a compound is 1500 L·mol⁻¹·cm⁻¹. What is the absorbance of a 2.0 × 10⁻⁴ M solution in a 1.00 cm cuvette?</li>
-        <li>A solution has an absorbance of 0.450 at 500 nm. If ε = 900 L·mol⁻¹·cm⁻¹ and the path length is 1.00 cm, what is the concentration of the solution?</li>
-        <li>What is the concentration of a solution if the absorbance is 0.680, ε = 1.25 × 10³ L·mol⁻¹·cm⁻¹, and the path length is 2.00 cm?</li>
-        <li>If a solution with concentration 5.0 × 10⁻⁵ M shows an absorbance of 0.150 in a 1.00 cm pathlength cuvette, what is the molar absorptivity?</li>
-        <li>A cuvette of 2.00 cm pathlength contains a solution with ε = 2.50 × 10³ L·mol⁻¹·cm⁻¹ and concentration 3.0 × 10⁻⁴ M. Calculate the absorbance.</li>
-    </ol>
-
-    <h2>Answer Key</h2>
-    <div class="answers">
+    <form id="beersForm">
         <ol>
-            <li>A = 0.30</li>
-            <li>c = 5.0 × 10⁻⁴ M</li>
-            <li>c = 2.72 × 10⁻⁴ M</li>
-            <li>ε = 3.0 × 10³ L·mol⁻¹·cm⁻¹</li>
-            <li>A = 1.50</li>
+            <li>ε = 1500 L·mol⁻¹·cm⁻¹, c = 2.0 × 10⁻⁴ M, l = 1.00 cm. Absorbance = <input type="text" class="answer-box" id="q1"></li>
+            <li>Absorbance = 0.450, ε = 900 L·mol⁻¹·cm⁻¹, l = 1.00 cm. Concentration = <input type="text" class="answer-box" id="q2"></li>
+            <li>Absorbance = 0.680, ε = 1.25 × 10³ L·mol⁻¹·cm⁻¹, l = 2.00 cm. Concentration = <input type="text" class="answer-box" id="q3"></li>
+            <li>Absorbance = 0.150, c = 5.0 × 10⁻⁵ M, l = 1.00 cm. Molar absorptivity = <input type="text" class="answer-box" id="q4"></li>
+            <li>c = 3.0 × 10⁻⁴ M, ε = 2.50 × 10³ L·mol⁻¹·cm⁻¹, l = 2.00 cm. Absorbance = <input type="text" class="answer-box" id="q5"></li>
         </ol>
-    </div>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '0.30',
+            q2: '5e-4',
+            q3: '2.72e-4',
+            q4: '3e3',
+            q5: '1.50'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 5; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
 
 </body>
 </html>
