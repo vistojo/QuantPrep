@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buffer Design Problem Set</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2C3E50; }
+        ol { margin-left: 20px; }
+        .answer-box { margin-bottom: 15px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Buffer Design Problem Set (5 Questions)</h1>
+
+    <h2>Instructions:</h2>
+    <p>Enter the ratio [A⁻]/[HA] for each buffer in the text box and click 'Submit' to check your answers.</p>
+
+    <form id="bufferForm">
+        <ol>
+            <li>pH 4.75 using acetic acid (pKa = 4.76): <input type="text" class="answer-box" id="q1"></li>
+            <li>pH 7.40 using H₂PO₄⁻/HPO₄²⁻ (pKa = 7.20): <input type="text" class="answer-box" id="q2"></li>
+            <li>0.50 M buffer at pH 9.25 using NH₄⁺/NH₃ (pKa = 9.25): <input type="text" class="answer-box" id="q3"></li>
+            <li>pH 3.80 using citric acid (pKa = 3.13): <input type="text" class="answer-box" id="q4"></li>
+            <li>pH 6.50 using HCO₃⁻/H₂CO₃ (pKa = 6.37): <input type="text" class="answer-box" id="q5"></li>
+        </ol>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '1.0',
+            q2: '1.58',
+            q3: '1.0',
+            q4: '0.47',
+            q5: '1.35'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 5; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer === correctAnswer) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
+
+</body>
+</html>
