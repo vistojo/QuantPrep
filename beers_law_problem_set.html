@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer's Law Problem Set</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2C3E50; }
+        ol { margin-left: 20px; }
+        .answer-box { margin-bottom: 15px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Beer's Law / Spectroscopy Problem Set (5 Questions)</h1>
+
+    <h2>Instructions:</h2>
+    <p>Enter your calculated value for absorbance or concentration in the text box and click 'Submit' to check your answers.</p>
+
+    <form id="beersForm">
+        <ol>
+            <li>ε = 1500 L·mol⁻¹·cm⁻¹, c = 2.0 × 10⁻⁴ M, l = 1.00 cm. Absorbance = <input type="text" class="answer-box" id="q1"></li>
+            <li>Absorbance = 0.450, ε = 900 L·mol⁻¹·cm⁻¹, l = 1.00 cm. Concentration = <input type="text" class="answer-box" id="q2"></li>
+            <li>Absorbance = 0.680, ε = 1.25 × 10³ L·mol⁻¹·cm⁻¹, l = 2.00 cm. Concentration = <input type="text" class="answer-box" id="q3"></li>
+            <li>Absorbance = 0.150, c = 5.0 × 10⁻⁵ M, l = 1.00 cm. Molar absorptivity = <input type="text" class="answer-box" id="q4"></li>
+            <li>c = 3.0 × 10⁻⁴ M, ε = 2.50 × 10³ L·mol⁻¹·cm⁻¹, l = 2.00 cm. Absorbance = <input type="text" class="answer-box" id="q5"></li>
+        </ol>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '0.30',
+            q2: '5e-4',
+            q3: '2.72e-4',
+            q4: '3e3',
+            q5: '1.50'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 5; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
+
+</body>
+</html>
