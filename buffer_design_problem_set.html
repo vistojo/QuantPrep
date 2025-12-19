@@ -8,7 +8,8 @@
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
         h1, h2 { color: #2C3E50; }
         ol { margin-left: 20px; }
-        .answers { background-color: #F4F4F4; padding: 10px; border-left: 4px solid #3498DB; }
+        .answer-box { margin-bottom: 15px; }
+        .feedback { color: #E74C3C; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -16,27 +17,45 @@
     <h1>Buffer Design Problem Set (5 Questions)</h1>
 
     <h2>Instructions:</h2>
-    <p>For each problem, calculate the ratio of conjugate base to acid required to achieve the desired pH. If necessary, determine the amount of acid or base to add to achieve the target concentration.</p>
+    <p>Enter the ratio [A⁻]/[HA] for each buffer in the text box and click 'Submit' to check your answers.</p>
 
-    <h2>Problems:</h2>
-    <ol>
-        <li>Design a buffer with a pH of 4.75 using acetic acid (pKa = 4.76) and its conjugate base. What is the ratio of [A⁻]/[HA]?</li>
-        <li>Design a buffer with a pH of 7.40 using H₂PO₄⁻/HPO₄²⁻ (pKa = 7.20). What is the ratio of [HPO₄²⁻]/[H₂PO₄⁻]?</li>
-        <li>You need a 0.50 M buffer at pH 9.25 using NH₄⁺/NH₃ (pKa = 9.25). What is the ratio of [NH₃]/[NH₄⁺]?</li>
-        <li>Design a buffer at pH 3.80 using citric acid (pKa = 3.13). Calculate the [A⁻]/[HA] ratio.</li>
-        <li>Prepare a buffer solution with pH 6.50 using HCO₃⁻/H₂CO₃ (pKa = 6.37). Determine the [A⁻]/[HA] ratio.</li>
-    </ol>
-
-    <h2>Answer Key</h2>
-    <div class="answers">
+    <form id="bufferForm">
         <ol>
-            <li>[A⁻]/[HA] ≈ 1.0</li>
-            <li>[HPO₄²⁻]/[H₂PO₄⁻] ≈ 1.58</li>
-            <li>[NH₃]/[NH₄⁺] ≈ 1.0</li>
-            <li>[A⁻]/[HA] ≈ 0.47</li>
-            <li>[HCO₃⁻]/[H₂CO₃] ≈ 1.35</li>
+            <li>pH 4.75 using acetic acid (pKa = 4.76): <input type="text" class="answer-box" id="q1"></li>
+            <li>pH 7.40 using H₂PO₄⁻/HPO₄²⁻ (pKa = 7.20): <input type="text" class="answer-box" id="q2"></li>
+            <li>0.50 M buffer at pH 9.25 using NH₄⁺/NH₃ (pKa = 9.25): <input type="text" class="answer-box" id="q3"></li>
+            <li>pH 3.80 using citric acid (pKa = 3.13): <input type="text" class="answer-box" id="q4"></li>
+            <li>pH 6.50 using HCO₃⁻/H₂CO₃ (pKa = 6.37): <input type="text" class="answer-box" id="q5"></li>
         </ol>
-    </div>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const answers = {
+            q1: '1.0',
+            q2: '1.58',
+            q3: '1.0',
+            q4: '0.47',
+            q5: '1.35'
+        };
+
+        function checkAnswers() {
+            let feedbackHTML = '<h2>Feedback</h2><ol>';
+            for (let i = 1; i <= 5; i++) {
+                let userAnswer = document.getElementById('q' + i).value.trim();
+                let correctAnswer = answers['q' + i];
+                if(userAnswer === correctAnswer) {
+                    feedbackHTML += `<li>Question ${i}: Correct!</li>`;
+                } else {
+                    feedbackHTML += `<li>Question ${i}: Incorrect. Correct answer is ${correctAnswer}</li>`;
+                }
+            }
+            feedbackHTML += '</ol>';
+            document.getElementById('feedbackContainer').innerHTML = feedbackHTML;
+        }
+    </script>
 
 </body>
 </html>
