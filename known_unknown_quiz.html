@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Known vs Unknown Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f4f9; }
+    h1 { text-align: center; color: #333; }
+    .question { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .question p { margin-bottom: 10px; }
+    button { padding: 8px 15px; margin-top: 10px; cursor: pointer; border: none; border-radius: 5px; background-color: #4CAF50; color: white; }
+    .answer { margin-top: 10px; font-weight: bold; color: #444; }
+</style>
+</head>
+<body>
+<h1>Known vs Unknown Quiz</h1>
+
+<div class="question">
+  <p><strong>Q1:</strong> You have a solution of unknown concentration of HCl. You titrate it with a 0.10 M NaOH solution until the indicator changes color.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q1Known">
+    <option value="">Select...</option>
+    <option value="A">Concentration of HCl</option>
+    <option value="B">Concentration of NaOH</option>
+    <option value="C">Volume at equivalence point</option>
+    <option value="D">Identity of indicator</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q1Unknown">
+    <option value="">Select...</option>
+    <option value="A">Concentration of HCl</option>
+    <option value="B">Concentration of NaOH</option>
+    <option value="C">Volume at equivalence point</option>
+    <option value="D">Identity of indicator</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer1()">Check Answer</button>
+  <p id="answer1" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q2:</strong> You measure the absorbance of a colored solution with a spectrophotometer. You know the path length of the cuvette and the molar absorptivity of the compound, but not the concentration.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q2Known">
+    <option value="">Select...</option>
+    <option value="A">Absorbance</option>
+    <option value="B">Path length</option>
+    <option value="C">Molar absorptivity</option>
+    <option value="D">All of the above</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q2Unknown">
+    <option value="">Select...</option>
+    <option value="A">Concentration</option>
+    <option value="B">Absorbance</option>
+    <option value="C">Path length</option>
+    <option value="D">Molar absorptivity</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer2()">Check Answer</button>
+  <p id="answer2" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q3:</strong> You have a primary standard solution with exact known concentration. You use it to standardize another solution to find its concentration.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q3Known">
+    <option value="">Select...</option>
+    <option value="A">Primary standard concentration</option>
+    <option value="B">Unknown solution concentration</option>
+    <option value="C">Volumes used</option>
+    <option value="D">Balanced chemical equation</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q3Unknown">
+    <option value="">Select...</option>
+    <option value="A">Primary standard concentration</option>
+    <option value="B">Unknown solution concentration</option>
+    <option value="C">Volumes used</option>
+    <option value="D">Balanced chemical equation</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer3()">Check Answer</button>
+  <p id="answer3" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q4:</strong> A precipitation reaction is used to isolate a solid from a dissolved ion. You weigh the precipitate at the end.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q4Known">
+    <option value="">Select...</option>
+    <option value="A">Final precipitate mass</option>
+    <option value="B">Initial ion concentration</option>
+    <option value="C">Identity of ions</option>
+    <option value="D">Reaction stoichiometry</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q4Unknown">
+    <option value="">Select...</option>
+    <option value="A">Final precipitate mass</option>
+    <option value="B">Initial ion concentration</option>
+    <option value="C">Identity of ions</option>
+    <option value="D">Reaction stoichiometry</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer4()">Check Answer</button>
+  <p id="answer4" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q5:</strong> You have a buffer solution. You know the concentration of the weak acid but not its conjugate base.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q5Known">
+    <option value="">Select...</option>
+    <option value="A">Weak acid concentration</option>
+    <option value="B">Conjugate base concentration</option>
+    <option value="C">pH</option>
+    <option value="D">Indicator used</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q5Unknown">
+    <option value="">Select...</option>
+    <option value="A">Weak acid concentration</option>
+    <option value="B">Conjugate base concentration</option>
+    <option value="C">pH</option>
+    <option value="D">Indicator used</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer5()">Check Answer</button>
+  <p id="answer5" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q6:</strong> You perform a gravimetric analysis by precipitating sulfate ions as BaSO₄. You weigh the BaSO₄.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q6Known">
+    <option value="">Select...</option>
+    <option value="A">Mass of BaSO₄</option>
+    <option value="B">Mass of sulfate ions</option>
+    <option value="C">Reaction ratio</option>
+    <option value="D">Volume of solution</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q6Unknown">
+    <option value="">Select...</option>
+    <option value="A">Mass of BaSO₄</option>
+    <option value="B">Mass of sulfate ions</option>
+    <option value="C">Reaction ratio</option>
+    <option value="D">Volume of solution</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer6()">Check Answer</button>
+  <p id="answer6" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q7:</strong> You are doing a standard addition experiment. You know the amount of standard added but not the original analyte concentration.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q7Known">
+    <option value="">Select...</option>
+    <option value="A">Amount of standard added</option>
+    <option value="B">Original analyte concentration</option>
+    <option value="C">Total volume</option>
+    <option value="D">Color of solution</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q7Unknown">
+    <option value="">Select...</option>
+    <option value="A">Amount of standard added</option>
+    <option value="B">Original analyte concentration</option>
+    <option value="C">Total volume</option>
+    <option value="D">Color of solution</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer7()">Check Answer</button>
+  <p id="answer7" class="answer"></p>
+</div>
+
+<div class="question">
+  <p><strong>Q8:</strong> During a complexometric titration, you know the EDTA concentration but not the concentration of Ca²⁺ in solution.</p>
+  <p>What is <strong>known</strong>?</p>
+  <select id="q8Known">
+    <option value="">Select...</option>
+    <option value="A">EDTA concentration</option>
+    <option value="B">Ca²⁺ concentration</option>
+    <option value="C">Volume of indicator</option>
+    <option value="D">Temperature of solution</option>
+  </select>
+  <p>What is <strong>unknown</strong>?</p>
+  <select id="q8Unknown">
+    <option value="">Select...</option>
+    <option value="A">EDTA concentration</option>
+    <option value="B">Ca²⁺ concentration</option>
+    <option value="C">Volume of indicator</option>
+    <option value="D">Temperature of solution</option>
+  </select>
+  <br>
+  <button onclick="checkAnswer8()">Check Answer</button>
+  <p id="answer8" class="answer"></p>
+</div>
+
+<script>
+function checkAnswer1() { const known = document.getElementById('q1Known').value; const unknown = document.getElementById('q1Unknown').value; document.getElementById('answer1').innerText = (known==='B' && unknown==='A') ? 'Correct! Known: NaOH concentration, Unknown: HCl concentration.' : 'Try again.'; }
+function checkAnswer2() { const known = document.getElementById('q2Known').value; const unknown = document.getElementById('q2Unknown').value; document.getElementById('answer2').innerText = (known==='D' && unknown==='A') ? 'Correct! Known: path length, molar absorptivity, absorbance. Unknown: concentration.' : 'Try again.'; }
+function checkAnswer3() { const known = document.getElementById('q3Known').value; const unknown = document.getElementById('q3Unknown').value; document.getElementById('answer3').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: primary standard concentration. Unknown: unknown solution concentration.' : 'Try again.'; }
+function checkAnswer4() { const known = document.getElementById('q4Known').value; const unknown = document.getElementById('q4Unknown').value; document.getElementById('answer4').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: precipitate mass. Unknown: initial ion concentration.' : 'Try again.'; }
+function checkAnswer5() { const known = document.getElementById('q5Known').value; const unknown = document.getElementById('q5Unknown').value; document.getElementById('answer5').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: weak acid concentration. Unknown: conjugate base concentration.' : 'Try again.'; }
+function checkAnswer6() { const known = document.getElementById('q6Known').value; const unknown = document.getElementById('q6Unknown').value; document.getElementById('answer6').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: BaSO₄ mass. Unknown: sulfate ion mass.' : 'Try again.'; }
+function checkAnswer7() { const known = document.getElementById('q7Known').value; const unknown = document.getElementById('q7Unknown').value; document.getElementById('answer7').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: standard added. Unknown: original analyte concentration.' : 'Try again.'; }
+function checkAnswer8() { const known = document.getElementById('q8Known').value; const unknown = document.getElementById('q8Unknown').value; document.getElementById('answer8').innerText = (known==='A' && unknown==='B') ? 'Correct! Known: EDTA concentration. Unknown: Ca²⁺ concentration.' : 'Try again.'; }
+</script>
+
+</body>
+</html>

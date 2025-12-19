@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 4 Problem 1: Strong Acid-Strong Base Titration</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 30px; background-color: #f9f9f9; }
+h1 { text-align: center; color: #333; }
+.question { margin-bottom: 20px; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+label { display: block; margin-top: 10px; }
+input { padding: 8px; width: 80px; margin-top: 5px; }
+button { padding: 8px 15px; margin-top: 15px; cursor: pointer; border: none; border-radius: 5px; background-color: #4CAF50; color: white; }
+.answer { margin-top: 15px; font-weight: bold; color: #444; }
+</style>
+</head>
+<body>
+<h1>Week 4 - Problem 1</h1>
+<div class="question">
+  <p><strong>Problem:</strong> You have 25.0 mL of HCl of unknown concentration. You titrate it with 0.100 M NaOH until the indicator changes color. The volume of NaOH used is 30.0 mL. Determine the concentration of HCl.</p>
+
+  <label>Known quantities (list with units):</label>
+  <input type="text" id="known1" placeholder="E.g., V_HCl = 25.0 mL">
+
+  <label>Unknown quantity (what you are solving for):</label>
+  <input type="text" id="unknown1" placeholder="E.g., [HCl]">
+
+  <label>Equation/Reaction:</label>
+  <input type="text" id="equation1" placeholder="E.g., NaOH + HCl -> NaCl + H2O">
+
+  <button onclick="check1()">Submit</button>
+  <p id="answer1" class="answer"></p>
+</div>
+
+<script>
+function check1() {
+    let known = document.getElementById('known1').value.trim();
+    let unknown = document.getElementById('unknown1').value.trim();
+    let equation = document.getElementById('equation1').value.trim();
+    document.getElementById('answer1').innerText = `Your setup:
+Known: ${known}
+Unknown: ${unknown}
+Equation: ${equation}
+\nReview: Ensure all units are included, correct reaction, and unknown is clearly labeled.`;
+}
+</script>
+</body>
+</html>
