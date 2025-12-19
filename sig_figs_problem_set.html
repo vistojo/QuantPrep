@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Significant Figures Problem Set</title>
+    <title>Significant Figures Practice</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
         h1, h2 { color: #2C3E50; }
         ol { margin-left: 20px; }
-        .answer-box { margin-bottom: 15px; }
+        .answer-box { margin-bottom: 15px; width: 150px; }
         .feedback { color: #E74C3C; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <h1>Significant Figures Problem Set (10 Questions)</h1>
+    <h1>Significant Figures Practice (10 Questions)</h1>
 
     <h2>Instructions:</h2>
-    <p>Enter your answer in the text box next to each question and click 'Submit' to see if it is correct.</p>
+    <p>Apply the rules of significant figures to each measurement or calculation. Enter your answer with the correct number of significant figures in the box and click 'Submit' to check.</p>
 
     <form id="sigfigForm">
         <ol>
-            <li>0.00456 m: <input type="text" class="answer-box" id="q1"></li>
-            <li>7000 g: <input type="text" class="answer-box" id="q2"></li>
-            <li>3.040 × 10³ L: <input type="text" class="answer-box" id="q3"></li>
-            <li>0.02010 kg: <input type="text" class="answer-box" id="q4"></li>
-            <li>0.006742 to 3 sig figs: <input type="text" class="answer-box" id="q5"></li>
-            <li>14567 to 2 sig figs: <input type="text" class="answer-box" id="q6"></li>
-            <li>9.8765 × 10⁻³ to 2 sig figs: <input type="text" class="answer-box" id="q7"></li>
-            <li>12.11 + 0.023 + 3.1 = ? <input type="text" class="answer-box" id="q8"></li>
-            <li>4.56 × 1.4 = ? <input type="text" class="answer-box" id="q9"></li>
-            <li>(0.00452 × 3.2) ÷ 0.02 = ? <input type="text" class="answer-box" id="q10"></li>
+            <li>Round 0.004562 to 2 sig figs: <input type="text" class="answer-box" id="q1"></li>
+            <li>Round 1234 to 3 sig figs: <input type="text" class="answer-box" id="q2"></li>
+            <li>0.02010 + 0.0032 (report with correct sig figs): <input type="text" class="answer-box" id="q3"></li>
+            <li>4.56 × 1.4 (report with correct sig figs): <input type="text" class="answer-box" id="q4"></li>
+            <li>0.006742 ÷ 2.1 (report with correct sig figs): <input type="text" class="answer-box" id="q5"></li>
+            <li>3.040 × 10³ rounded to 2 sig figs: <input type="text" class="answer-box" id="q6"></li>
+            <li>0.0003056 rounded to 3 sig figs: <input type="text" class="answer-box" id="q7"></li>
+            <li>12.11 + 0.023 + 3.1 (report with correct sig figs): <input type="text" class="answer-box" id="q8"></li>
+            <li>(0.00452 × 3.2) ÷ 0.02 (report with correct sig figs): <input type="text" class="answer-box" id="q9"></li>
+            <li>5.678 × 0.043 (report with correct sig figs): <input type="text" class="answer-box" id="q10"></li>
         </ol>
         <button type="button" onclick="checkAnswers()">Submit</button>
     </form>
@@ -39,16 +39,16 @@
 
     <script>
         const answers = {
-            q1: '3',
-            q2: '1',
-            q3: '4',
-            q4: '4',
-            q5: '0.00674',
-            q6: '1.5e4',
-            q7: '0.0099',
+            q1: '0.0046',
+            q2: '1230',
+            q3: '0.023',
+            q4: '6.4',
+            q5: '0.00321',
+            q6: '3.0e3',
+            q7: '0.000306',
             q8: '15.2',
-            q9: '6.4',
-            q10: '0.72'
+            q9: '0.72',
+            q10: '0.244'
         };
 
         function checkAnswers() {
